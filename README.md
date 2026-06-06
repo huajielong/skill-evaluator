@@ -10,7 +10,7 @@
 <h1 align="center">🏥 skill-evaluator</h1>
 <p align="center"><b>AI 智能体技能体检医生 —— 安装前先查一查，避免踩坑</b></p>
 <p align="center">
-  🤖 Claude Code · 💻 Codex CLI · 🦙 OpenClaw · 🌀 Cursor · 任何通用智能体
+  🤖 Claude Code · 💻 Codex CLI · 🦙 OpenClaw · 🌀 Cursor · ⚡ Hemerss · 任何通用智能体
 </p>
 
 <p align="center">
@@ -181,6 +181,7 @@ curl -fsSL https://raw.githubusercontent.com/huajielong/skill-evaluator/main/ins
 | **Codex CLI** | 放到 `~/.codex/skills/` 或在对话中引用路径 |
 | **OpenClaw** | 放到技能目录，或直接让智能体读取 SKILL.md |
 | **Cursor** | 在 .cursorrules 或对话中引用 |
+| **Hemerss** | 放到技能加载目录，或对话中引用 |
 | **任何通用智能体** | 把 SKILL.md 内容粘贴给智能体，或用 `Read` 工具加载 |
 
 ### 直接跑脚本
