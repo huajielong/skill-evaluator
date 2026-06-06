@@ -1,0 +1,15 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Shell scripts
+*.sh text eol=lf
+
+# Markdown
+*.md text
+
+# JSON
+*.json text
+
+# Git files
+.gitignore text
+.gitattributes text

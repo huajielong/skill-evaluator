@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ShellCheck
+        run: |
+          sudo apt-get install -y shellcheck
+          shellcheck scripts/evaluate.sh
+
+      - name: SKILL.md frontmatter validation
+        run: |
+          head -1 SKILL.md | grep -q "^---$" || { echo "Missing frontmatter start"; exit 1; }
+
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Self-evaluate with good-skill fixture
+        run: |
+          bash scripts/evaluate.sh --all evals/fixtures/good-skill
+
+      - name: Security gate catches evil-skill
+        run: |
+          bash scripts/evaluate.sh --security evals/fixtures/evil-skill && exit 1 || echo "✅ Evil skill correctly rejected"

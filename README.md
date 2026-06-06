@@ -1,10 +1,13 @@
 <p align="center">
   <img src="https://img.shields.io/badge/version-3.1.0-blue" alt="v3.1"/>
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"/>
+  <img src="https://img.shields.io/github/actions/workflow/status/huajielong/skill-evaluator/ci.yml?label=CI" alt="CI"/>
+  <img src="https://img.shields.io/github/stars/huajielong/skill-evaluator?style=social" alt="Stars"/>
   <img src="https://img.shields.io/badge/AI%20Agent-Skill-orange" alt="AI Agent Skill"/>
   <img src="https://img.shields.io/badge/Claude%20Code-✓-brightgreen" alt="Claude Code"/>
   <img src="https://img.shields.io/badge/Codex%20CLI-✓-brightgreen" alt="Codex CLI"/>
   <img src="https://img.shields.io/badge/OpenClaw-✓-brightgreen" alt="OpenClaw"/>
+  <img src="https://img.shields.io/badge/Hemerss-✓-brightgreen" alt="Hemerss"/>
 </p>
 
 <h1 align="center">🏥 skill-evaluator</h1>
@@ -173,7 +176,7 @@ curl -fsSL https://raw.githubusercontent.com/huajielong/skill-evaluator/main/ins
 > **"ship 这个技能值不值得装"**
 > **"帮我看看刚才下载的那个技能"**
 
-**平台适配说明：**
+**平台适配：**
 
 | 平台 | 使用方式 |
 |:-----|:---------|
@@ -215,26 +218,59 @@ bash ~/.claude/skills/skill-evaluator/scripts/evaluate.sh --all <技能路径>
 
 ---
 
+## 📁 项目文件
+
+| 文件 | 作用 |
+|:-----|:------|
+| [`SKILL.md`](SKILL.md) | 技能本体（AI 智能体加载后自动激活） |
+| [`scripts/evaluate.sh`](scripts/evaluate.sh) | 自动化检查脚本（安全门禁 + 行数 + 完整性） |
+| [`references/consumer-card.md`](references/consumer-card.md) | 普通技能评分卡 v3.1（5 维度打分明细） |
+| [`references/meta-skill-card.md`](references/meta-skill-card.md) | 元技能评分卡（6 维度） |
+| [`install.sh`](install.sh) | 一键安装脚本 |
+| [`RANKINGS.md`](RANKINGS.md) | 已评测技能排行榜 |
+| [`CHANGELOG.md`](CHANGELOG.md) | 版本更新历史 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 贡献指南 |
+| [`SECURITY.md`](SECURITY.md) | 安全策略 |
+| [`evals/`](evals/) | 测试用例（好/中/坏 3 个 mock 技能） |
+
 ## 🔧 技术栈
 
 - **SKILL.md** — AI 智能体元技能指令（Claude Code、Codex CLI、OpenClaw 等通用格式）
 - **Bash** — evaluate.sh 自动化检查脚本
+- **GitHub Actions** — CI 自动验证
 - **5 维评分卡** — 数据驱动的客观评估体系（纯方法论，任何智能体都能用）
 
 ---
 
-## 📈 路线图
+## ❓ 常见问题
 
-- [x] v3.1 — 脚本计数精度 + 信息密度阈值 + 脚本完整性检查
-- [ ] v3.2 — 批量评测（一次评估整个 skills 目录）
-- [ ] v3.3 — 持续评测追踪（版本更新后重新评分）
-- [ ] v4.0 — 社区技能排行榜网站
+<details>
+<summary><b>这个技能和普通技能有什么区别？</b></summary>
+skill-evaluator 是「元技能」——它不是帮你干活，而是帮你看别的技能好不好。打个比方：它是质检员，不是生产线工人。
+</details>
+
+<details>
+<summary><b>一定要装到技能目录才能用吗？</b></summary>
+不一定。你可以直接把 SKILL.md 或评分卡内容复制给任何 AI 智能体，它就能按这套方法论帮你评估。装到技能目录只是让智能体自动加载，更方便。
+</details>
+
+<details>
+<summary><b>为什么有脚本的技能分数更高？</b></summary>
+我们评测了 1000+ 技能后发现，有脚本的平均 84.3 分，没脚本的平均 63.8 分——差距 20.5 分。脚本 = 技能作者写了真实可运行的代码，质量信号的可靠性远高于纯文字描述。
+</details>
+
+<details>
+<summary><b>这个项目能评测自己吗？</b></summary>
+可以。<code>bash scripts/evaluate.sh --all .</code> 就能给自己评分。我们试过，95/100 😄
+</details>
 
 ---
 
 ## 🤝 贡献
 
-提交 PR 或 Issue，帮助更多人发现好技能、避开坑技能。
+欢迎任何形式的贡献——提交 PR、报告 Bug、请求评测新技能。
+
+查看 [`CONTRIBUTING.md`](CONTRIBUTING.md) 了解详情。
 
 <a href="https://github.com/huajielong/skill-evaluator/graphs/contributors">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen" alt="Contributions Welcome"/>

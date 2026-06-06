@@ -10,7 +10,7 @@ description: >
   v3.1: 脚本计数精度+信息密度阈值+脚本完整性检查
 metadata:
   type: meta-skill
-  platform: [claude-code, claude-ai, headless]
+  platform: [claude-code, codex-cli, openclaw, cursor, hemeress, generic-ai]
 ---
 
 # 技能评估器
