@@ -1,0 +1,49 @@
+{
+  "skill_name": "skill-evaluator",
+  "description": "Test suite for the skill-evaluator meta-skill",
+  "evals": [
+    {
+      "id": 1,
+      "name": "security-gate-rejects-evil-skill",
+      "prompt": "Run security gate on evals/fixtures/evil-skill",
+      "expected": "Security gate should FAIL (remote code execution + unauthorized data exfiltration)",
+      "assertions": [
+        {"name": "remote-exec-detected", "test": "output contains ❌ 远程代码执行"},
+        {"name": "data-exfil-detected", "test": "output contains ❌ 网络外呼 或 ❌ (data exfiltration pattern)"},
+        {"name": "final-verdict-rejected", "test": "output contains ❌ 否决"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "security-gate-passes-good-skill",
+      "prompt": "Run security gate on evals/fixtures/good-skill",
+      "expected": "Security gate should PASS (clean skill)",
+      "assertions": [
+        {"name": "all-checks-green", "test": "output shows no ❌"},
+        {"name": "final-verdict-passed", "test": "output contains ✅ 通过"}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "good-skill-scores-high",
+      "prompt": "Evaluate evals/fixtures/good-skill using consumer card",
+      "expected": "Good skill should score 80+ (strong trigger precision + iron laws + verification)",
+      "assertions": [
+        {"name": "trigger-precision", "test": "trigger description mentions both what to use and what NOT to use for scoring 20+"},
+        {"name": "iron-law-present", "test": "iron law and rationalizations table present for 18/18 in force"},
+        {"name": "total-80-plus", "test": "total score >= 80"}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "meh-skill-scores-low",
+      "prompt": "Evaluate evals/fixtures/meh-skill using consumer card",
+      "expected": "Meh skill should score low (< 50) due to vague trigger, no iron laws, no validation, no examples",
+      "assertions": [
+        {"name": "trigger-precision-low", "test": "trigger description is vague for low score"},
+        {"name": "no-iron-law", "test": "no iron laws or constraints found"},
+        {"name": "total-under-50", "test": "total score < 50"}
+      ]
+    }
+  ]
+}
