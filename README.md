@@ -1,5 +1,3 @@
-> [🇨🇳 中文说明](README.zh.md)
-
 <p align="center">
   <img src="https://img.shields.io/badge/version-3.1.0-blue" alt="v3.1"/>
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"/>
@@ -25,6 +23,8 @@
   <a href="#%EF%B8%8F-skill-leaderboard">🏆 Leaderboard</a> • 
   <a href="#-quick-start">⚡ Quick Start</a>
 </p>
+
+> [中文说明](README.zh.md)
 
 ---
 
